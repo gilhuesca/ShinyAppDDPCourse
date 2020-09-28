@@ -1,0 +1,66 @@
+---
+title: "Linear model generator for the mtcars dataset"
+author: "Gil Huesca"
+date: "9/28/2020"
+output: slidy_presentation
+highlight: espresso
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+This presentation introduce you to the linear model generator for the mtcars data set. The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). It has 32 observations on 11 (numeric) variables.
+
+* [, 1]	mpg	Miles/(US) gallon
+* [, 2]	cyl	Number of cylinders
+* [, 3]	disp	Displacement (cu.in.)
+* [, 4]	hp	Gross horsepower
+* [, 5]	drat	Rear axle ratio
+* [, 6]	wt	Weight (1000 lbs)
+* [, 7]	qsec	1/4 mile time
+* [, 8]	vs	Engine (0 = V-shaped, 1 = straight)
+* [, 9]	am	Transmission (0 = automatic, 1 = manual)
+* [,10]	gear	Number of forward gears
+* [,11]	carb	Number of carburetors
+
+(from the dataset description)
+
+## Instructions
+
+You find the app in https://gilhuesca.shinyapps.io/GilShinyFirstAppDDPCourse/. 
+
+These are the steps to use the application
+
+1. You find the variables of the mtcars dataset in the side bar panel. 
+2. The first set is for you to set the dependent variable.
+3. The second set is for you to set the predictor.
+4. After you choose both variables (y and x in your model), some calculations will be displayed in the main panel.
+5. First, a linear model is generated and the formula used is displayed.
+6. Then, the coefficients of the model are displayed
+7. Finally, a plot with the two variables and the line representing the model is displayed.
+
+Note: If both variables are the same, no model is generated and no plot is displayed. 
+
+## Example
+
+If you choose mpg as dependent variable and disp as predictor you will get the following output.
+
+Lineal model for: mpg~disp
+
+```{r echo = TRUE}
+  yy <- mtcars[,which(names(mtcars)=="mpg")]
+  xx <- mtcars[,which(names(mtcars)=="disp")]
+  lm <- lm(mpg~disp,data = mtcars)
+  paste("Intercept: ",lm$coefficients[1]," *** ","disp",": ",lm$coefficients[2],sep="")
+```
+
+## Plot
+
+```{r echo = TRUE}
+  plot(xx,yy)
+  lines(xx,fitted(lm),col="green")
+```
+
