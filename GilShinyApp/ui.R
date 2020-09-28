@@ -47,7 +47,17 @@ shinyUI(fluidPage(
         ),
 
         # Show a plot of the generated distribution
-        mainPanel(
+        mainPanel("These are the steps to use the application
+
+1. You find the variables of the mtcars dataset in the side bar panel. 
+2. The first set is for you to set the dependent variable.
+3. The second set is for you to set the predictor.
+4. After you choose both variables (y and x in your model), some calculations will be displayed in the main panel.
+5. First, a linear model is generated and the formula used is displayed.
+6. Then, the coefficients of the model are displayed
+7. Finally, a plot with the two variables and the line representing the model is displayed.
+
+Note: If both variables are the same, no model is generated and no plot is displayed.",
             textOutput("explain"),
             textOutput("lmresult"),
             plotOutput("distPlot")
